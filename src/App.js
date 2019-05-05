@@ -15,17 +15,26 @@ const nearbySearchTest = () => {
 
   const service = new window.google.maps.places.PlacesService(document.getElementById('root'));
   
-  service.nearbySearch(requestObj, function(results, status) {
+  service.nearbySearch(requestObj, function(results, status, pagination) {
+    if (status !== 'OK') return;
+    
+    console.log('********************')
     console.log('Retrieved data:');
-    console.log('____________________')
+    console.log(results.length)
+    console.log('********************')
     //console.log(results)
     for (let place in results) {
       console.log(results[place].name)
+      // Not all places have rating
       console.log('rating: ' + results[place].rating)
+      // Not all places have currently open
       //console.log((results[place].opening_hours.open_now ? 'Currently Open!':'Currently Closed!'))
       console.log(results[place].vicinity)
       console.log('____________________')
     }
+    console.log(pagination.hasNextPage)
+
+    if (pagination.hasNextPage) {pagination.nextPage()}
     
     //var elem = document.createElement('img')
     //elem.setAttribute('src', results[1].photos[0].getUrl({maxWidth: 300, maxHeight: 300}));
