@@ -1,11 +1,9 @@
 import React from 'react';
 import './App.css';
 
-//let url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=41.877636,-87.6316811&radius=50&type=restaurant&key=AIzaSyDfnC4P2MMxZmfaBQStsyvvp_Fk80IDHzU';
-
 const nearbySearchTest = () => {
-  let mylocation = new window.google.maps.LatLng(41.877636,-87.6316811);
-  const radius = 200;
+  let mylocation = new window.google.maps.LatLng(41.7890955,-88.2190438);
+  const radius = 1200;
 
   let requestObj = {
     location: mylocation,
@@ -24,13 +22,22 @@ const nearbySearchTest = () => {
     console.log('********************')
     //console.log(results)
     for (let place in results) {
-      console.log(results[place].name)
+      //console.log(results[place].name)
       // Not all places have rating
-      console.log('rating: ' + results[place].rating)
+      //console.log('rating: ' + results[place].rating)
       // Not all places have currently open
       //console.log((results[place].opening_hours.open_now ? 'Currently Open!':'Currently Closed!'))
-      console.log(results[place].vicinity)
-      console.log('____________________')
+      // Not actual address
+      //console.log(results[place].vicinity)
+      //console.log('____________________')
+      service.getDetails({placeId: results[place].place_id}, function(details, status) {
+        //console.log(details)
+        console.log('__________________')
+        console.log(details.name)
+        console.log(details.formatted_address)
+        console.log(details.formatted_phone_number)
+        console.log('Rating: ' + (details.rating ? details.rating:'Not yet rated'))
+      })
     }
     console.log(pagination.hasNextPage)
 
