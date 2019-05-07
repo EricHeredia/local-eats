@@ -29,7 +29,7 @@ const GetResults = (props) => {
           id: data.place_id,
           checked: false
         }
-        
+
         if (!localStorage.getItem(restaraunt.name)){
           localStorage.setItem(restaraunt.name, JSON.stringify(restaraunt))
         }
@@ -37,7 +37,7 @@ const GetResults = (props) => {
         let createRow = <RestarauntRow key={restaraunt.id} restaraunt={restaraunt} />
         rowContainer.push(createRow)
       })
-
+      
       setRows(rowContainer)
 
       //for (let place in results) {
