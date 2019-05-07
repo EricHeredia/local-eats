@@ -30,11 +30,12 @@ const RestarauntRow = (props) => {
 
   return (
     <label>
-      <div id="restarauntRow" style={{'background-color': checked ? "#666": "white"}}>
+      <div id="restarauntRow" style={{'backgroundColor': checked ? "#aaa": "white"}}>
         <input type="checkbox" id="rowCheckbox" onChange={onChangeHandler} checked={checked}/>
-        <h3 id="rowHeader">
+        <h3 id="rowHeader" style={{'color': checked? '#666':'black'}}>
           {props.restaraunt.name}
         </h3>
+        {checked? <h3 className="been-here">BEEN HERE</h3>:null}
       </div>
     </label>
   )

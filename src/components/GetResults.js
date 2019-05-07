@@ -30,9 +30,9 @@ const GetResults = (props) => {
           checked: false
         }
         
-        !localStorage.getItem(restaraunt.name) ?
-          localStorage.setItem(restaraunt.name, JSON.stringify(restaraunt)):
-          console.log('Restaraunt data already saved.')
+        if (!localStorage.getItem(restaraunt.name)){
+          localStorage.setItem(restaraunt.name, JSON.stringify(restaraunt))
+        }
         
         let createRow = <RestarauntRow key={restaraunt.id} restaraunt={restaraunt} />
         rowContainer.push(createRow)

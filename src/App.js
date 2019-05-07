@@ -14,7 +14,6 @@ window.google.maps.event.addListener(autocomplete, 'place_changed', () => {
   setLatLng(latLng)
 })
 
-
   return (
     <div className="App">
       <GetResults latLng={latLng}/>
