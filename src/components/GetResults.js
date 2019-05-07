@@ -20,9 +20,21 @@ const GetResults = (props) => {
     let rowContainer = []
     service.nearbySearch(requestObj, (results, status, pagination) => {
       if (status !== 'OK') return;
-      
-      results.forEach((restaraunt) => {
-        let createRow = <RestarauntRow key={restaraunt.place_id} name={restaraunt.name} />
+
+      results.forEach((data) => {
+
+        const restaraunt = {
+          key: data.id,
+          name: data.name,
+          id: data.place_id,
+          checked: false
+        }
+        
+        !localStorage.getItem(restaraunt.name) ?
+          localStorage.setItem(restaraunt.name, JSON.stringify(restaraunt)):
+          console.log('Restaraunt data already saved.')
+        
+        let createRow = <RestarauntRow key={restaraunt.id} restaraunt={restaraunt} />
         rowContainer.push(createRow)
       })
 

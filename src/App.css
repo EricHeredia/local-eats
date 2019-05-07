@@ -45,9 +45,6 @@ html, body {
   width: 80vw;
 }
 
-#rowRadio {
-  display: none;
-}
 /*#restarauntRow:hover {
   height: 200px;
   box-shadow: 5px 5px 5px;
@@ -59,5 +56,5 @@ margin: 5px 0 20px 10px;
 
 #rowCheckbox {
   margin-left: 10px;
-  transform: scale(1.5)
+  transform: scale(1.5);
 }
