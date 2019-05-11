@@ -1,5 +1,5 @@
 {
-  "main.css": "/local-eats/static/css/main.6f7006b1.chunk.css",
+  "main.css": "/local-eats/static/css/main.8bab7d69.chunk.css",
   "main.js": "/local-eats/static/js/main.7abb79a1.chunk.js",
   "main.js.map": "/local-eats/static/js/main.7abb79a1.chunk.js.map",
   "runtime~main.js": "/local-eats/static/js/runtime~main.161d6a24.js",
@@ -7,7 +7,7 @@
   "static/js/2.f09c5d3d.chunk.js": "/local-eats/static/js/2.f09c5d3d.chunk.js",
   "static/js/2.f09c5d3d.chunk.js.map": "/local-eats/static/js/2.f09c5d3d.chunk.js.map",
   "index.html": "/local-eats/index.html",
-  "precache-manifest.cbbcdfd66376ed9512bbce004bae2ff2.js": "/local-eats/precache-manifest.cbbcdfd66376ed9512bbce004bae2ff2.js",
+  "precache-manifest.e15f46d8e9afb9b83114aab5f55949c1.js": "/local-eats/precache-manifest.e15f46d8e9afb9b83114aab5f55949c1.js",
   "service-worker.js": "/local-eats/service-worker.js",
-  "static/css/main.6f7006b1.chunk.css.map": "/local-eats/static/css/main.6f7006b1.chunk.css.map"
+  "static/css/main.8bab7d69.chunk.css.map": "/local-eats/static/css/main.8bab7d69.chunk.css.map"
 }
