@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import './App.css';
-import GetResults from './components/GetResults';
+import React, { useState } from 'react'
+import './App.css'
+import GetResults from './components/GetResults'
 
 const App = () => {
 
@@ -20,12 +20,12 @@ autocomplete.addListener('place_changed', () => {
   let latLng = [place.geometry.location.lat(), place.geometry.location.lng()]
   setLatLng(latLng)
 })
-  console.log('App.js')
+
   return (
     <div className="App">
       {latLng && <GetResults latLng={latLng}/>}
     </div>
-  );
+  )
 }
 
 export default App;
