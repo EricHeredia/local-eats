@@ -1,23 +1,23 @@
--Add point system. Marking as been there grants been there points. Higher points
- grant higher teirs (iron, bronze, silver, gold, plat, diamond, etc.)
+ [ ] Add point system. Marking as been there grants been there points. Higher points
+     grant higher teirs (iron, bronze, silver, gold, plat, diamond, etc.)
 
--Change formatting of localStorage to work with points system and to easier
- manipulate data.
+ [ ] Change formatting of localStorage to work with points system and to easier
+     manipulate data.
 
- -Make each item clickable to show more information. Address and phone for quick
-  call / directions.
+ [ ] Make each item clickable to show more information. Address and phone for quick
+     call / directions.
 
--Do more research and implement react hooks. Focus on clean functional components.
- Keep everything scalable.
+ [ ] Do more research and implement react hooks. Focus on clean functional components.
+     Keep everything scalable.
 
--Keep style simple, but interesting. Responsive but leaning more towards mobile.
-
-------------------------------------------------
-
-+ Set up mongoDB and express
-
-+ create user sign-up/login
+ [ ] Keep style simple, but interesting. Responsive but leaning more towards mobile.
 
 ------------------------------------------------
 
-++ Research and switch to Apollo GraphQL
+ [ ] Set up mongoDB and express
+
+ [ ] create user sign-up/login
+
+------------------------------------------------
+
+ [ ] Research and switch to Apollo GraphQL
