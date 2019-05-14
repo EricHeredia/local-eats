@@ -24,7 +24,7 @@ const GetResults = (props) => {
 
         results.forEach((data) => {
 
-          if () { // Finsh this tomorrow
+          if () { // Finish this tomorrow
 
             let newRestaurant = 
               {
