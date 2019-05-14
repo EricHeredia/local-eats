@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import RestaurantRow from './RestaurantRow'
+//import RestaurantRow from './RestaurantRow'
 
 const GetResults = (props) => {
   const [rows, setRows] = useState()
@@ -19,31 +19,41 @@ const GetResults = (props) => {
     
     useEffect(() => {
       service.nearbySearch(requestObj, (results, status, pagination) => {
-        if (status !== 'OK') return
+
+        //let restaurants = JSON.parse(localStorage.getItem('restaurants')) || []
 
         results.forEach((data) => {
 
-          const restaurant = {
-            key: data.id,
-            name: data.name,
-            id: data.place_id,
-            checked: false
-          }
+          if () { // Finsh this tomorrow
 
-          if (!localStorage.getItem(restaurant.name)){
-            localStorage.setItem(restaurant.name, JSON.stringify(restaurant))
-          }
+            let newRestaurant = 
+              {
+                key: data.id,
+                name: data.name,
+                id: data.place_id,
+                checked: false
+              }
+            
 
-          let createRow = <RestaurantRow key={restaurant.id} service={service} restaurant={restaurant}/>
-          rowContainer.push(createRow)
+            restaurants.push(newRestaurant)
+
+          }
+          
+       
+
+          //let createRow = <RestaurantRow key={restaurant.id} service={service} restaurant={restaurant}/>
+          //rowContainer.push(createRow)
         })
+
+        //localStorage.setItem('restaurants',JSON.stringify(restaurants))
+
         setRows(rowContainer)
       })
     }, [props.latLng])
 
   return (
     <div>
-      {rows}
+    
     </div>
   )
 }
