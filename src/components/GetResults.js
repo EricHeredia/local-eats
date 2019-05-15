@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-//import RestaurantRow from './RestaurantRow'
+import RestaurantRow from './RestaurantRow'
 
 const GetResults = (props) => {
   const [rows, setRows] = useState()
 
   let mylocation = new window.google.maps.LatLng(props.latLng[0], props.latLng[1])
-  const radius = 2000
+  const radius = 600
 
   let requestObj = {
     location: mylocation,
@@ -20,32 +20,30 @@ const GetResults = (props) => {
     useEffect(() => {
       service.nearbySearch(requestObj, (results, status, pagination) => {
 
-        //let restaurants = JSON.parse(localStorage.getItem('restaurants')) || []
+        let restaurants = JSON.parse(localStorage.getItem('restaurants')) || []
 
         results.forEach((data) => {
 
-          if () { // Finish this tomorrow
+          let newRestaurant = {
+            key: data.id,
+            name: data.name,
+            id: data.place_id,
+            checked: false
+          }
 
-            let newRestaurant = 
-              {
-                key: data.id,
-                name: data.name,
-                id: data.place_id,
-                checked: false
-              }
-            
+          const hasRestaurant = (newRestaurant, restaurants) => {
+            return restaurants.some((restaurant) => restaurant.id === newRestaurant.id)
+          }
 
+          if (!hasRestaurant(newRestaurant, restaurants)) {
             restaurants.push(newRestaurant)
-
           }
           
-       
-
-          //let createRow = <RestaurantRow key={restaurant.id} service={service} restaurant={restaurant}/>
-          //rowContainer.push(createRow)
+          let createRow = <RestaurantRow key={newRestaurant.id} service={service} restaurant={newRestaurant}/>
+          rowContainer.push(createRow)
         })
 
-        //localStorage.setItem('restaurants',JSON.stringify(restaurants))
+        localStorage.setItem('restaurants', JSON.stringify(restaurants))
 
         setRows(rowContainer)
       })
@@ -53,7 +51,7 @@ const GetResults = (props) => {
 
   return (
     <div>
-    
+      {rows}
     </div>
   )
 }
