@@ -19,6 +19,7 @@ const GetResults = (props) => {
     
     useEffect(() => {
       service.nearbySearch(requestObj, (results, status, pagination) => {
+        if (status !== 'OK') return
 
         let restaurants = JSON.parse(localStorage.getItem('restaurants')) || []
 
