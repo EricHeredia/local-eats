@@ -2,18 +2,19 @@ import React, { useState } from 'react'
 
 const RestaurantRow = (props) => {
 
-  let restaurantData = JSON.parse(localStorage.getItem(props.restaurant.name))
+  let restaurantData = JSON.parse(localStorage.getItem('restaurants'))
+  let currentRestaurant = restaurantData.find(obj => obj.name === props.restaurant.name)
 
-  const [checked, setChecked] = useState(restaurantData.checked)
+  const [checked, setChecked] = useState(currentRestaurant.checked)
 
   const onCheckChange = () => {
     if (checked) {
-      restaurantData.checked = !checked
-      localStorage.setItem(restaurantData.name, JSON.stringify(restaurantData))
+      currentRestaurant.checked = !checked
+      localStorage.setItem('restaurants', JSON.stringify(restaurantData))
       setChecked(!checked)
     } else {
-      restaurantData.checked = !checked
-      localStorage.setItem(restaurantData.name, JSON.stringify(restaurantData))
+      currentRestaurant.checked = !checked
+      localStorage.setItem('restaurants', JSON.stringify(restaurantData))
       setChecked(!checked)
     }
   }
@@ -32,7 +33,7 @@ const RestaurantRow = (props) => {
       //})
     //}
   //}
-
+  console.log('RestaurantRow.js')
   return (
     <label>
       <div id="restaurantRow" style={{'backgroundColor': checked ? "#aaa": "white"}}>
