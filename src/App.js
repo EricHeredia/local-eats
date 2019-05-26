@@ -1,29 +1,34 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css'
 import GetResults from './components/GetResults'
 
 const App = () => {
 
-const [latLng, setLatLng] = useState([41.7962928, -88.19741479999999])
+  const [latLng, setLatLng] = useState([41.7962928, -88.19741479999999])
 
-const input = document.getElementById('autocomplete')
-const autocomplete = new window.google.maps.places.Autocomplete(input, 
-  {types: ['(regions)'], componentRestrictions: {country: 'US'}})
+  useEffect(() => {
+    const input = document.getElementById('autocomplete')
 
-autocomplete.addListener('place_changed', () => {
-  let place = autocomplete.getPlace()
+    const autocomplete = new window.google.maps.places.Autocomplete(input, 
+      {types: ['(regions)'], componentRestrictions: {country: 'US'}})
 
-  if (!place.geometry) {
-    // Not needed atm
-    return
-  }
-  let latLng = [place.geometry.location.lat(), place.geometry.location.lng()]
-  setLatLng(latLng)
-})
+    const autoListener = autocomplete.addListener('place_changed', () => {
+      let place = autocomplete.getPlace()
 
+      if (!place.geometry) {
+        // Not needed atm
+        return
+      }
+      let latLng = [place.geometry.location.lat(), place.geometry.location.lng()]
+      setLatLng(latLng)
+    })
+    return () => autocomplete.removeListener(autoListener)
+  }, [])
+
+  console.log('App.js')
   return (
     <div className="App">
-      {latLng && <GetResults latLng={latLng}/>}
+      <GetResults latLng={latLng}/>
     </div>
   )
 }
