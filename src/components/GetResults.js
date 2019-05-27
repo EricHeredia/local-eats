@@ -5,7 +5,7 @@ const GetResults = (props) => {
   const [rows, setRows] = useState()
 
   let mylocation = new window.google.maps.LatLng(props.latLng[0], props.latLng[1])
-  const radius = 600
+  const radius = 30
 
   let requestObj = {
     location: mylocation,
@@ -40,7 +40,7 @@ const GetResults = (props) => {
             restaurants.push(newRestaurant)
           }
           
-          let createRow = <RestaurantRow key={newRestaurant.id} service={service} restaurant={newRestaurant}/>
+          let createRow = <RestaurantRow key={newRestaurant.id} searchService={service} restaurant={newRestaurant}/>
           rowContainer.push(createRow)
         })
 
@@ -50,6 +50,7 @@ const GetResults = (props) => {
       })
     }, [props.latLng])
 
+  console.log('GetResults.js rendered')
   return (
     <div>
       {rows}

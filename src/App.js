@@ -12,7 +12,7 @@ const App = () => {
     const autocomplete = new window.google.maps.places.Autocomplete(input, 
       {types: ['(regions)'], componentRestrictions: {country: 'US'}})
 
-    const autoListener = autocomplete.addListener('place_changed', () => {
+    const autocompleteListener = autocomplete.addListener('place_changed', () => {
       let place = autocomplete.getPlace()
 
       if (!place.geometry) {
@@ -22,10 +22,10 @@ const App = () => {
       let latLng = [place.geometry.location.lat(), place.geometry.location.lng()]
       setLatLng(latLng)
     })
-    return () => autocomplete.removeListener(autoListener)
+    return () => autocomplete.removeListener(autocompleteListener)
   }, [])
 
-  console.log('App.js')
+  console.log('App.js rendered')
   return (
     <div className="App">
       <GetResults latLng={latLng}/>

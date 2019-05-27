@@ -33,7 +33,8 @@ const RestaurantRow = (props) => {
       //})
     //}
   //}
-  console.log('RestaurantRow.js')
+
+  console.log('RestaurantRow.js rendered')
   return (
     <label>
       <div id="restaurantRow" style={{'backgroundColor': checked ? "#aaa": "white"}}>
