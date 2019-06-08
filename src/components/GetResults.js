@@ -5,7 +5,7 @@ const GetResults = (props) => {
   const [rows, setRows] = useState()
 
   let mylocation = new window.google.maps.LatLng(props.latLng[0], props.latLng[1])
-  const radius = 2000
+  const radius = 30
 
   let requestObj = {
     location: mylocation,
@@ -21,26 +21,36 @@ const GetResults = (props) => {
       service.nearbySearch(requestObj, (results, status, pagination) => {
         if (status !== 'OK') return
 
+        let restaurants = JSON.parse(localStorage.getItem('restaurants')) || []
+
         results.forEach((data) => {
 
-          const restaurant = {
+          let newRestaurant = {
             key: data.id,
             name: data.name,
             id: data.place_id,
             checked: false
           }
 
-          if (!localStorage.getItem(restaurant.name)){
-            localStorage.setItem(restaurant.name, JSON.stringify(restaurant))
+          const hasRestaurant = (newRestaurant, restaurants) => {
+            return restaurants.some((restaurant) => restaurant.id === newRestaurant.id)
           }
 
-          let createRow = <RestaurantRow key={restaurant.id} service={service} restaurant={restaurant}/>
+          if (!hasRestaurant(newRestaurant, restaurants)) {
+            restaurants.push(newRestaurant)
+          }
+          
+          let createRow = <RestaurantRow key={newRestaurant.id} searchService={service} restaurant={newRestaurant}/>
           rowContainer.push(createRow)
         })
+
+        localStorage.setItem('restaurants', JSON.stringify(restaurants))
+
         setRows(rowContainer)
       })
     }, [props.latLng])
 
+  console.log('GetResults.js rendered')
   return (
     <div>
       {rows}
